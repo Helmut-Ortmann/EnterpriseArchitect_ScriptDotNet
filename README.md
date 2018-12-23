@@ -6,7 +6,7 @@ Implement your EA Scripts in .NET and make only the glue code to EA in JScript, 
 ## Benefits
 
 * Find your typos at compile time
-* Huge libraries
+* A vast amount of libraries, examples and tutorials
 * Easy testing
 * [LINQ for SQL](https://www.linqpad.net/WhyLINQBeatsSQL.aspx) the powerful way of SQL
 
