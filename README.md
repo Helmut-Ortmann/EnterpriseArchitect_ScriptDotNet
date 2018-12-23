@@ -14,15 +14,15 @@ Implement your EA Scripts in .NET and make only the glue code to EA in JScript, 
 
 EA:  
 ```vbScript 
-result = RunCommand(myScript.exe, "DoTask1", guid)
+result = RunCommand(myScript.exe, "DoTask1", guid) ' vb script glue code
 ```
 
 .NET:
 ``` 
 switch (command) {  // Decide what to do
     case: "DoTask1":
-       var el = _repository.GetElementByGuid (guid); 
-       _repository.ShowInProjectView(el);
+       var el = _repository.GetElementByGuid (guid); // get the passed element
+       _repository.ShowInProjectView(el);            // show the passed element in project browser
     break;
 
     case: "DoTask2":
