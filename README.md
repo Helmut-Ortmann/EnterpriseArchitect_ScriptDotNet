@@ -12,8 +12,13 @@ Implement your EA Scripts in .NET and make only the glue code to EA in JScript, 
 
 ## Principle
 
-EA:  result = RunCommand(myScript.exe, "DoTask1", guid)
-.NET: 
+EA:  
+```vbScript 
+result = RunCommand(myScript.exe, "DoTask1", guid)
+```
+
+.NET:
+``` 
 switch (command) {  // Decide what to do
     case: "DoTask1":
        var el = _repository.GetElementByGuid (guid); 
@@ -22,8 +27,8 @@ switch (command) {  // Decide what to do
 
     case: "DoTask2":
     break;
-
 }
+```
 
 ## References
 
