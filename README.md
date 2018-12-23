@@ -10,6 +10,21 @@ Implement your EA Scripts in .NET and make only the glue code to EA in JScript, 
 * Easy testing
 * [LINQ for SQL](https://www.linqpad.net/WhyLINQBeatsSQL.aspx) the powerful way of SQL
 
+## Principle
+
+EA:  result = RunCommand(myScript.exe, "DoTask1", guid)
+.NET: 
+switch (command) {  // Decide what to do
+    case: "DoTask1":
+       var el = _repository.GetElementByGuid (guid); 
+       _repository.ShowInProjectView(el);
+    break;
+
+    case: "DoTask2":
+    break;
+
+}
+
 ## References
 
 * [EA Community](https://community.sparxsystems.com/community-resources/1065-use-c-java-for-your-vb-script)
