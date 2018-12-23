@@ -34,7 +34,7 @@ switch (command) {  // Decide what to do
 
 ## References
 
-* [EA Community](https://community.sparxsystems.com/community-resources/1065-use-c-java-for-your-vb-script)
+* [EA Community](https://community.sparxsystems.com/community-resources/1065-use-c-java-for-your-vb-script), Use C#, Java, for your VB Scripting
 * [EA Hybrid Scripting](https://github.com/Helmut-Ortmann/EnterpriseArchitect_hoTools/wiki/HybridScripting)
 * [Why LINQ beats SQL](https://www.linqpad.net/WhyLINQBeatsSQL.aspx)
 
