@@ -3,6 +3,8 @@ Use the power of .NET like C#, F#, VB for your EA Scripting and Querying.
 
 Implement your EA Scripts in .NET and make only the glue code to EA in JScript, VB Script or JavaScript. The minimal EA glue code is responsible for EA integration and passing the parameters to the Windows Console Application written in your favourite .NET language.
 
+You use your IDE with your Debugger.
+
 ## Benefits
 
 * Find your typos at compile time
