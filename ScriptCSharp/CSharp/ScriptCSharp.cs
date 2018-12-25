@@ -25,14 +25,28 @@ namespace ho.ScriptDotnet.CSharp
         public bool TraversePackage(string[] args)
         {
             EA.Collection packages = _repository.Models;
-            for (short ip = 0; ip < packages.Count; ip++)
+            foreach (EA.Package pkg in packages)
             {
-                EA.Package child = (EA.Package)packages.GetAt(ip);
-                _repository.ShowInProjectView(child);
-                Print(child.Name);
+                _repository.ShowInProjectView(pkg);
+                PrintPackageRecursive(pkg);
             }
 
             return true;
+        }
+        /// <summary>
+        /// Print all packages and locate each package
+        /// </summary>
+        /// <param name="package"></param>
+        private void PrintPackageRecursive(EA.Package package)
+        {
+            Trace(package.Name);
+            EA.Collection packages = package.Packages;
+            foreach (EA.Package pkg in packages)
+            {
+                _repository.ShowInProjectView(pkg);
+                Print(pkg.Name);
+                PrintPackageRecursive(pkg);
+            }
         }
 
         /// <summary>

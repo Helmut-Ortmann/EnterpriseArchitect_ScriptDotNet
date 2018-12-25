@@ -25,7 +25,17 @@ namespace ho.ScriptDotnet.CSharp
         /// <returns>Standard Output or Error Output</returns>
         static void Main(string[] args)
         {
+            #if DEBUG
+                MessageBox.Show(@"Debug: VS
+
+- VS: Attach to process, choose ScriptCSharp
+- VS: Set breakpoints
+- VS: Debug
+- EA: click on OK", "DEBUG: Attach VS to ScriptCSharp");
+            #endif
+            // handle admin requests
             if (HandleAdminRequest(args)) return;
+
             ScriptCSharp scriptCSharp = GetScriptCSharp(args);
             string command = GetCommand(args);
             if (scriptCSharp != null && !String.IsNullOrWhiteSpace(command))
@@ -37,10 +47,18 @@ namespace ho.ScriptDotnet.CSharp
                         returnValue = scriptCSharp.TraversePackage(args);
                         break;
                     case "SetEnvHome":
-                        SetUserScriptHomeEnv();
+                        returnValue = SetUserScriptHomeEnv();
                         break;
                     case "DelEnvHome":
-                        DelUserScriptHomeEnv();
+                        returnValue = DelUserScriptHomeEnv();
+                        break;
+                    default:
+                        MessageBox.Show($@"Command:{Tab}command
+Par2:{Tab}{(args.Length > 1 ? args[1]:"")}
+Par3:{Tab}{(args.Length > 2 ? args[2]: "")}
+Par4:{Tab}{(args.Length > 3 ? args[3]: "")}
+", "Command not implemented");
+                        returnValue = false;
                         break;
                 }
                 // handle return code
