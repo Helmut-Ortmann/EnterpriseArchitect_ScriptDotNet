@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptCSharp", "ScriptCSharp\ScriptCSharp.csproj", "{DFEF2030-F0BF-4F63-B55F-358B9C8DB5ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{502CB88A-4712-4627-A212-8D6442538049}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		ScriptDotNet.eap = ScriptDotNet.eap
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFEF2030-F0BF-4F63-B55F-358B9C8DB5ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFEF2030-F0BF-4F63-B55F-358B9C8DB5ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFEF2030-F0BF-4F63-B55F-358B9C8DB5ED}.Debug|x86.ActiveCfg = Release|x86
+		{DFEF2030-F0BF-4F63-B55F-358B9C8DB5ED}.Debug|x86.Build.0 = Release|x86
+		{DFEF2030-F0BF-4F63-B55F-358B9C8DB5ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFEF2030-F0BF-4F63-B55F-358B9C8DB5ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFEF2030-F0BF-4F63-B55F-358B9C8DB5ED}.Release|x86.ActiveCfg = Release|x86
+		{DFEF2030-F0BF-4F63-B55F-358B9C8DB5ED}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCB31953-96A4-4BE1-A7E3-856BF8C0A466}
+	EndGlobalSection
+EndGlobal
