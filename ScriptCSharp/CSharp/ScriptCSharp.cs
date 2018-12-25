@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace ho.ScriptDotnet.CSharp
@@ -18,16 +14,27 @@ namespace ho.ScriptDotnet.CSharp
         }
 
         /// <summary>
-        /// Traverse package. Print the package name und select the package in browser
+        /// Traverse package. If a package guid is passed start from this package. If not show all model packages.
+        /// Print the package name und select the package in browser.
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="args[2]">optional: guid of the start package</param>
         /// <returns></returns>
         public bool TraversePackage(string[] args)
         {
             EA.Collection packages = _repository.Models;
+            // guid passed, use the selected package as start package
+            if (args.Length > 2 && args[2].StartsWith("{"))
+            {
+                var startPackage = _repository.GetPackageByGuid(args[2].Trim());
+                if (startPackage != null)
+                {
+                    PrintPackageRecursive(startPackage);
+                    return true;
+                }
+            }
+            
             foreach (EA.Package pkg in packages)
             {
-                _repository.ShowInProjectView(pkg);
                 PrintPackageRecursive(pkg);
             }
 
@@ -40,12 +47,12 @@ namespace ho.ScriptDotnet.CSharp
         private void PrintPackageRecursive(EA.Package package)
         {
             Trace(package.Name);
+            _repository.ShowInProjectView(package);
+            Print(package.Name);
             EA.Collection packages = package.Packages;
             foreach (EA.Package pkg in packages)
             {
-                _repository.ShowInProjectView(pkg);
-                Print(pkg.Name);
-                PrintPackageRecursive(pkg);
+                 PrintPackageRecursive(pkg);
             }
         }
 

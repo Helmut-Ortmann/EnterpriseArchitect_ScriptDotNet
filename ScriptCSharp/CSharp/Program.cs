@@ -11,7 +11,7 @@ namespace ho.ScriptDotnet.CSharp
 {
     class Program
     {
-        private static readonly string EaScripthomeEnvName = "EA_SCRIPT_HOME";
+        private static readonly string EaScriptHomeEnvName = "EA_SCRIPT_HOME";
         private static readonly string Tab = "\t";
         /// <summary>
         /// Entry of the ScriptCSharp.exe to be called from EA Script (JScript, JavaScript, VB Script)
@@ -40,7 +40,7 @@ namespace ho.ScriptDotnet.CSharp
             string command = GetCommand(args);
             if (scriptCSharp != null && !String.IsNullOrWhiteSpace(command))
             {
-                bool returnValue = false;
+                bool returnValue;
                 switch (command)
                 {
                     case "TraversePackage":
@@ -89,7 +89,7 @@ Par4:{Tab}{(args.Length > 3 ? args[3]: "")}
             }
             else
             {
-                MessageBox.Show($"No first parameter available. Process ID required", "Can't read pid (process id) from the first parameter");
+                MessageBox.Show("No first parameter available. Process ID required", "Can't read pid (process id) from the first parameter");
                 return null;
 
             }
@@ -99,28 +99,31 @@ Par4:{Tab}{(args.Length > 3 ? args[3]: "")}
         /// Gets the command from args
         /// </summary>
         /// <param name="args"></param>
-        /// <returns>Commad or "" if no command available</returns>
+        /// <returns>Command or "" if no command available</returns>
         static string GetCommand(string[] args)
         {
             if (args.Length > 1) return args[1];
-            MessageBox.Show($"No second parameter with 'command' available. ", "Can't read the command to execute");
+            string msg = "No second parameter with 'command' available, break!!!";
+            MessageBox.Show(msg, "Can't read the command to execute");
+            Console.WriteLine(msg);
             return "";
         }
         /// <summary>
-        /// Return error
+        /// Return error. Returns the optional message and ends the output with $"{Newline}Error"
         /// </summary>
         /// <param name="msg"></param>
         private static void ReturnError(string msg = "")
         {
-            Console.WriteLine("Error");
+            Console.WriteLine($"{msg}{Environment.NewLine}Error");
         }
         /// <summary>
-        /// Return ok
+        /// Returns the optional message and ends the output with $"{Newline}Ok"
         /// </summary>
         /// <param name="msg"></param>
+        // ReSharper disable once UnusedParameter.Local
         private static void ReturnOk(string msg = "")
         {
-            Console.WriteLine("Ok");
+            Console.WriteLine("{msg}{Environment.NewLine}Ok");
         }
         /// <summary>
         /// Handle admin requests
@@ -139,17 +142,21 @@ Par4:{Tab}{(args.Length > 3 ? args[3]: "")}
             {
                 switch (args[0].ToLower())
                 {
+                    // ReSharper disable once StringLiteralTypo
                     case "setenv":
                         SetUserScriptHomeEnv();
                         return true;
 
+                    // ReSharper disable once StringLiteralTypo
                     case "delenv":
                         DelUserScriptHomeEnv();
                         return true;
 
+                    // ReSharper disable once StringLiteralTypo
                     case "getenv":
                         GetUserScriptHomeEnv();
                         return true;
+
                     case "info":
                         GetInfo();
                         return true;
@@ -165,22 +172,23 @@ Par4:{Tab}{(args.Length > 3 ? args[3]: "")}
         /// <summary>
         /// Get info of ScriptCSharp
         /// </summary>
+        // ReSharper disable once UnusedMethodReturnValue.Local
         private static bool GetInfo()
         {
             var pathDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string envVariable = Environment.GetEnvironmentVariable(EaScripthomeEnvName, EnvironmentVariableTarget.User)??"";
+            string envVariable = Environment.GetEnvironmentVariable(EaScriptHomeEnvName, EnvironmentVariableTarget.User)??"";
 
             MessageBox.Show($@"Version:{Tab}'{Assembly.GetEntryAssembly().GetName().Version}'
 Path:{Tab}{GetScriptFullName()}
-Current Env:{Tab}'{EaScripthomeEnvName}'={envVariable}
-Expected Env:{Tab}'{EaScripthomeEnvName}'={pathDirectory}
+Current Env:{Tab}'{EaScriptHomeEnvName}'={envVariable}
+Expected Env:{Tab}'{EaScriptHomeEnvName}'={pathDirectory}
 Equal Env:{Tab}{envVariable.ToLower() == pathDirectory.ToLower()}
 
 Admin Commands:
 'Info'{Tab}show this information
-'GetEnv'{Tab}Get the '{EaScripthomeEnvName}' Env Variable
-'SetEnv'{Tab}Set the '{EaScripthomeEnvName}' Env Variable with the own directory
-'DelEnv'{Tab}Del the '{EaScripthomeEnvName}' Env Variable
+'GetEnv'{Tab}Get the '{EaScriptHomeEnvName}' Env Variable
+'SetEnv'{Tab}Set the '{EaScriptHomeEnvName}' Env Variable with the own directory
+'DelEnv'{Tab}Del the '{EaScriptHomeEnvName}' Env Variable
 
 Copy  with CTRL+C to Clipboard, ignore beep!
 ", "ScriptCSharp: Info");
@@ -191,15 +199,16 @@ Copy  with CTRL+C to Clipboard, ignore beep!
         /// Get the EA_SCRIPT_HOME environment variable with the current path
         /// </summary>
         /// <returns></returns>
+        // ReSharper disable once UnusedMethodReturnValue.Local
         private static bool GetUserScriptHomeEnv()
         {
             var pathDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string envVariable = Environment.GetEnvironmentVariable(EaScripthomeEnvName,  EnvironmentVariableTarget.User)??"";
+            string envVariable = Environment.GetEnvironmentVariable(EaScriptHomeEnvName,  EnvironmentVariableTarget.User)??"";
 
-            if (envVariable != null) { 
+            if (String.IsNullOrWhiteSpace(envVariable)) { 
                 MessageBox.Show($@"User environment variable: 
-Current:{Tab}'{EaScripthomeEnvName}'={envVariable}
-Expected:{Tab}'{EaScripthomeEnvName}'={pathDirectory}
+Current:{Tab}'{EaScriptHomeEnvName}'={envVariable}
+Expected:{Tab}'{EaScriptHomeEnvName}'={pathDirectory}
 Equal:{Tab}{envVariable.ToLower() == pathDirectory.ToLower()}
 
 deleted
@@ -209,7 +218,7 @@ Copy  with CTRL+C to Clipboard, ignore beep!", $"{GetScriptName()}: Home environ
             else
             {
                 MessageBox.Show($@"User environment variable: 
-'{EaScripthomeEnvName}'
+'{EaScriptHomeEnvName}'
 
 not set", $"{GetScriptName()}: Home environment variable not set");
             }
@@ -222,9 +231,9 @@ not set", $"{GetScriptName()}: Home environment variable not set");
         private static bool SetUserScriptHomeEnv()
         {
             var pathDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            Environment.SetEnvironmentVariable(EaScripthomeEnvName, pathDirectory, EnvironmentVariableTarget.User);
+            Environment.SetEnvironmentVariable(EaScriptHomeEnvName, pathDirectory, EnvironmentVariableTarget.User);
             MessageBox.Show($@"User environment variable: 
-'{EaScripthomeEnvName}'={pathDirectory}
+'{EaScriptHomeEnvName}'={pathDirectory}
 
 set
 
@@ -237,9 +246,9 @@ Copy  with CTRL+C to Clipboard, ignore beep!", $"{GetScriptName()}: Home environ
         /// <returns></returns>
         private static bool DelUserScriptHomeEnv()
         {
-            Environment.SetEnvironmentVariable(EaScripthomeEnvName, null, EnvironmentVariableTarget.User);
+            Environment.SetEnvironmentVariable(EaScriptHomeEnvName, null, EnvironmentVariableTarget.User);
             MessageBox.Show($@"User environment variable: 
-'{EaScripthomeEnvName}'
+'{EaScriptHomeEnvName}'
 
 deleted
 
