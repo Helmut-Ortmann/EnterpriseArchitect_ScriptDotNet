@@ -107,6 +107,7 @@
     <None Include="Scripts\SetEnvProductive.bat" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EA\VBScript\AutomationScripts.xml" />
     <Content Include="EA\VBScript\ListDiagramElements.vbs" />
     <Content Include="EA\VBScript\TraversePackage.vbs" />
     <Content Include="Library\hoLinqToSql.dll" />
