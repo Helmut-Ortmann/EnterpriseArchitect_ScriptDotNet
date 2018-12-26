@@ -107,9 +107,11 @@
     <None Include="Scripts\SetEnvProductive.bat" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EA\VBScript\ListDiagramElements.vbs" />
+    <Content Include="EA\VBScript\TraversePackage.vbs" />
     <Content Include="Library\hoLinqToSql.dll" />
-    <Content Include="VBScript\RunCommand.vbs" />
-    <Content Include="VBScript\RunCommandTest.vbs" />
+    <Content Include="EA\VBScript\RunCommand.vbs" />
+    <Content Include="EA\VBScript\RunCommandTest.vbs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">

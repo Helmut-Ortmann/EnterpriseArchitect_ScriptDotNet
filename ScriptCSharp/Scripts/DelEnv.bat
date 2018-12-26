@@ -1,6 +1,6 @@
 @echo off
 
-REM Get ScriptCSharp environemnt variable of ScriptCSharp.exe
+REM Delete the ScriptCSharp environemnt variable of ScriptCSharp.exe
 REM
 REM Use the correct path of ScriptCSharp.exe
 REM Either of your IDE or your target directory

@@ -1,7 +1,8 @@
 'option explicit
 '
 ' See:
-' 
+' GitHub: Helmut-Ortmann/EnterpriseArchitect_ScriptDotNet
+' - https://github.com/Helmut-Ortmann/EnterpriseArchitect_ScriptDotNet
 ' SPARX Webinar Hybrid Scripting
 ' - http://www.sparxsystems.com/resources/webinar/release/ea13/videos/hybrid-scripting.html
 ' SPARX Tutorial Hyper Script
@@ -14,10 +15,10 @@
 
 '--------------------------------------------------------------
 ' RunCommand
-' Runs the passed *.exe files and returns the Standard Output
+' Runs the passed *.exe file and returns the Standard Output
 ' 
 ' Signiture:
-' result = RunCommand command, parameter1, parameter2
+' result = RunCommand(command, parameter1, parameter2 parameter3)
 '
 ' Description:
 ' - Estimates the own Process ID
@@ -165,6 +166,9 @@ Function Run(CommandExe,param1,param2, param3)
     ' make sure the path may contain spaces
     ' use '"' to wrap opath string	
 	'http://www.vbsedit.com/html/5593b353-ef4b-4c99-8ae1-f963bac48929.asp
+	
+	' Expand environment variables
+	commandExe = ws.ExpandEnvironmentStrings(CommandExe)
     command = CommandExe &" "& param1 &" "&param2&" "&param3&" " 
 	On Error Resume Next
     Set wsShellExe = ws.Exec(command)

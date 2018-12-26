@@ -46,6 +46,10 @@ namespace ho.ScriptDotnet.CSharp
                     case "TraversePackage":
                         returnValue = scriptCSharp.TraversePackage(args);
                         break;
+                    case "ListDiagramElements":
+                        returnValue = scriptCSharp.ListDiagramElements(args);
+                        break;
+
                     case "SetEnvHome":
                         returnValue = SetUserScriptHomeEnv();
                         break;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 
 namespace ho.ScriptDotnet.CSharp
@@ -37,6 +38,41 @@ namespace ho.ScriptDotnet.CSharp
             {
                 PrintPackageRecursive(pkg);
             }
+
+            return true;
+        }
+        /// <summary>
+        /// List all diagram elements.
+        /// </summary>
+        /// <param name="args[2]">guid of the diagram</param>
+        /// <returns></returns>
+        public bool ListDiagramElements(string[] args)
+        {
+            // guid passed, use the selected diagram
+            if (args.Length > 2 && args[2].StartsWith("{"))
+            {
+                EA.Diagram dia = (EA.Diagram)_repository.GetDiagramByGuid(args[2].Trim());
+                if (dia != null)
+                {
+                    foreach (EA.DiagramObject diaObj in dia.DiagramObjects)
+                    {
+                        EA.Element el = _repository.GetElementByID(diaObj.ElementID);
+                        if (el != null)
+                        {
+                            Print(el.Name);
+                            _repository.ShowInProjectView(el);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("No Diagram guid passed");
+                MessageBox.Show("Diagram guid should be passed", "No Diagram guid passed");
+                return false;
+            }
+
+            
 
             return true;
         }

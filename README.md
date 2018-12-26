@@ -6,19 +6,21 @@ Implement your EA Scripts in .NET and make only the glue code to EA in JScript, 
 
 You use your IDE with your Debugger.
 
+The additional effort: Three lines or so glue-code to connect to the C# Console Application which does the heavy work.
+
 ## Benefits
 
 * Find your typos at compile time
 * A vast amount of libraries, examples and tutorials
-* Easy testing
-* [LINQ for SQL](https://www.linqpad.net/WhyLINQBeatsSQL.aspx) the powerful way of SQL
+* Easy testing and debugging
+* [LINQ for SQL](https://www.linqpad.net/WhyLINQBeatsSQL.aspx), the powerful way of SQL
 
 ## Principle
 
 EA:  
 
 ```vbScript
-result = RunCommand(myScript.exe, "DoTask1", guid) ' vb script glue code
+result = RunCommand(myScript.exe, "DoTask1", guid) ' vb script glue-code
 ```
 
 .NET:
@@ -34,6 +36,12 @@ switch (command) {  // Decide what to do
     break;
 }
 ```
+
+## EA glue code
+
+Take the EA-Script Template and add three or so lines of code and you have done integration or the so-called glue-code.
+
+![EA VB Scripts](images/VbScriptsOverview.png)
 
 ## References
 
