@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ho.ScriptDotnet.CSharp
 {
-    class Program
+    class ProgramMain
     {
         private static readonly string EaScriptHomeEnvName = "EA_SCRIPT_HOME";
-        private static readonly string Tab = "\t";
+        private const string Tab = "    ";
+        private static readonly bool verbose = true;
         /// <summary>
         /// Entry of the ScriptCSharp.exe to be called from EA Script (JScript, JavaScript, VB Script)
         /// args[0]  PID: Process id connect to the calling EA repository
@@ -40,6 +36,8 @@ namespace ho.ScriptDotnet.CSharp
             string command = GetCommand(args);
             if (scriptCSharp != null && !String.IsNullOrWhiteSpace(command))
             {
+                // Print Script and its first two parameter
+                if (verbose) scriptCSharp.Print($"{GetScriptFullName()} '{command}' '{GetArg(args,2)}'");
                 bool returnValue;
                 switch (command)
                 {
@@ -48,6 +46,14 @@ namespace ho.ScriptDotnet.CSharp
                         break;
                     case "ListDiagramElements":
                         returnValue = scriptCSharp.ListDiagramElements(args);
+                        break;
+                    // EA shows ModelSearch Scripts in the Context Menu of the Search Window (row of find Search Results) 
+                    case "ModelSearch":
+                        returnValue = scriptCSharp.ModelSearch(args);
+                        break;
+                    // EA shows ProjectSearch Scripts as last entry in the Search Categories (Common Searches, .. ,mySearch, Scripts) of the Search Window
+                    case "ProjectSearch":
+                        returnValue = scriptCSharp.ProjectSearch(args);
                         break;
 
                     case "SetEnvHome":
@@ -112,6 +118,18 @@ Par4:{Tab}{(args.Length > 3 ? args[3]: "")}
             Console.WriteLine(msg);
             return "";
         }
+
+        /// <summary>
+        /// Get the passed argument with the index. Blank it parameter not exists.
+        /// </summary>
+        /// <param name="args"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        static string GetArg(string[] args, int index)
+        {
+            return args.Length > index ? args[index] : "";
+        }
+
         /// <summary>
         /// Return error. Returns the optional message and ends the output with $"{Newline}Error"
         /// </summary>

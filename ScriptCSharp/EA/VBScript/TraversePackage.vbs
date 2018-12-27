@@ -40,7 +40,7 @@ sub OnProjectBrowserScript()
 		    ' Par1:    Package GUID
 			dim thePackage as EA.Package
 			set thePackage = Repository.GetTreeSelectedObject()
-			runCommand "%EA_SCRIPT_HOME%ScriptCSharp.exe", "TraversePackage", thePackage.PackageGUID
+			runCommand "%EA_SCRIPT_HOME%ScriptCSharp.exe", "TraversePackage", thePackage.PackageGUID, ""
 			
 '			
 '		case otDiagram

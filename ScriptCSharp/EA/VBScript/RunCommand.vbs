@@ -50,9 +50,9 @@ sub Test
 	Session.Output process
     Session.Output "--------------------------------------------"
 	' Test Run(..,..)
-	result = Run("ping", "127.0.0.1", " ", " ")
+	result = Run("ping", "127.0.0.1", " ", " ", " ")
 	Session.Output "--------------------------------------------"
-	Session.Output "Run('ping', '127.0.0.1', ' ', ' ')" & vbCRLF
+	Session.Output "Run('ping', '127.0.0.1', ' ', ' ', ' ')" & vbCRLF
 	Session.Output result
     Session.Output "--------------------------------------------"
 	Session.Output vbCRLF & vbCRLF & vbCRLF
@@ -73,9 +73,9 @@ sub TestJava
 	Session.Output process
     Session.Output "--------------------------------------------"
 	' Test RunJava(..,..)
-	result = RunCommandJava("c:\temp\java", "SparxSystems.RepositoryInterface", " ", " ")
+	result = RunCommandJava("c:\temp\java", "SparxSystems.RepositoryInterface", " ", " "," ", " ")
 	Session.Output "--------------------------------------------"
-	Session.Output "RunJava 'c:\temp\java', 'SparxSystems.RepositoryInterface', ' ', ' ')" & vbCRLF
+	Session.Output "RunJava 'c:\temp\java', 'SparxSystems.RepositoryInterface', ' ', ' ', ' ', ' ')" & vbCRLF
 	Session.Output result
     Session.Output "--------------------------------------------"
 	Session.Output vbCRLF & vbCRLF & vbCRLF
@@ -88,33 +88,37 @@ end sub
 '
 ' Parameters:
 ' - CommandExe   The *.exe file to call
-' - param1       Your parameter 1 you want to pass to the exe
-' - param2       Your parameter 2 you want to pass to the exe
+' - param1       Your parameter 1 you want to pass to the exe, usually the function to do, e.g. "Find"
+' - param2       Your parameter 2 you want to pass to the exe, usually a guid to {.......}
+' - param3       Your parameter 3 you want to pass to the exe
 ' - Return Value The Standard Output of the called *.exe
 '
 ' Your *.exe:    Get the EA Repository by the Process ID of the EA Instance
 ' - para1        The ProcessID of the EA Instance
 ' - para2        param1 
 ' - para3        param2 
-Function RunCommand(CommandExe, param1, param2)
-    RunCommand = Run(CommandExe, ProcessId("EA.exe"), param1, param2)
+' - para4        param3 
+Function RunCommand(CommandExe, param1, param2, param3)
+    RunCommand = Run(CommandExe, ProcessId("EA.exe"), param1, param2, param3)
 End Function
 
 '--------------------------------------------------------------------
 ' Function to call an Java Class and returns the Standard Output to the caller
 '
 ' Parameters:
-' - CommandExe   The *.exe file to call
+' - CommandExe   The Java Class to call
 ' - param1       Your parameter 1 you want to pass to the exe
 ' - param2       Your parameter 2 you want to pass to the exe
+' - param3       Your parameter 3 you want to pass to the exe
 ' - Return Value The Standard Output of the called *.exe
 '
 ' Your Java Class:    Get the EA Repository by the Process ID of the EA Instance
 ' - para1             The ProcessID of the EA Instance
 ' - para2             param1 
 ' - para3             param2 
-Function RunCommandJava(baseFolder, eaClass, param1, param2)
-    RunCommandJava = RunJava(baseFolder, eaClass, ProcessId("EA.exe"), param1, param2)
+' - para4             param3 
+Function RunCommandJava(baseFolder, eaClass, param1, param2, param3, param4)
+    RunCommandJava = RunJava(baseFolder, eaClass, ProcessId("EA.exe"), param1, param2, param3, param4)
 End Function
 
 
@@ -155,7 +159,8 @@ End Function
 ' param1:      Value parameter you want to pass to CommandExe (no references, objects)
 ' param2:      Value parameter you want to pass to CommandExe (no references, objects)
 ' param3:      Value parameter you want to pass to CommandExe (no references, objects)
-Function Run(CommandExe,param1,param2, param3) 
+' param4:      Value parameter you want to pass to CommandExe (no references, objects)
+Function Run(CommandExe, pid, param1, param2, param3) 
     Dim ws,wsShellExe, Command
 	Dim stdOut ' Standard output
 	Dim stdErr ' Error output
@@ -169,7 +174,7 @@ Function Run(CommandExe,param1,param2, param3)
 	
 	' Expand environment variables
 	commandExe = ws.ExpandEnvironmentStrings(CommandExe)
-    command = CommandExe &" "& param1 &" "&param2&" "&param3&" " 
+    command = CommandExe & " " & pid & " "& param1 & " " & param2 & " " & param3 & " " 
 	On Error Resume Next
     Set wsShellExe = ws.Exec(command)
 	If Err.Number <> 0 Then
@@ -212,13 +217,14 @@ End Function
 ' param1:      Value parameter you want to pass to CommandExe (no references, objects)
 ' param2:      Value parameter you want to pass to CommandExe (no references, objects)
 ' param3:      Value parameter you want to pass to CommandExe (no references, objects)
+' param4:      Value parameter you want to pass to CommandExe (no references, objects)
 '
 ' baseFolder\
 '           \eaapi.jar
 '           \SSJavaCOM.dll
 '           \SparxSystems\
 '                        \... your Java classes
-Function RunJava(baseFolder, eaClass, param1, param2, param3)
+Function RunJava(baseFolder, eaClass, param1, param2, param3, param4)
     Dim ws,wsShellExe, Command
     Dim objEnv
 	Dim stdOut ' Standard output
@@ -238,7 +244,7 @@ Function RunJava(baseFolder, eaClass, param1, param2, param3)
 
 
     Set ws = CreateObject("WScript.Shell")
-    command = "java -cp ""eaapi.jar;.;"" " & eaClass &" "& param1 &" "&param2&" "&param3&" " 
+    command = "java -cp ""eaapi.jar;.;"" " & eaClass & " " & param1 & " " &param2 & " " & param3 & " " & param4 & " " 
     Session.Output "Command=" & "'" & command & "'"
     Session.Output objEnv("PATH")
     On Error Resume Next

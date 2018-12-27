@@ -11,10 +11,10 @@ The additional effort: Three lines or so glue-code to connect to the C# Console 
 
 ## Benefits
 
-* Find your typos at compile time
-* A vast amount of libraries, examples and tutorials
-* Easy testing and debugging
-* [LINQ for SQL](https://www.linqpad.net/WhyLINQBeatsSQL.aspx), the powerful way of SQL
+- Find your typos at compile time
+- A vast amount of libraries, examples and tutorials
+- Easy testing and debugging
+- [LINQ for SQL](https://www.linqpad.net/WhyLINQBeatsSQL.aspx), the powerful way of SQL
 
 ## Principle
 
@@ -41,12 +41,24 @@ switch (command) {  // Decide what to do
 ## EA glue-code
 
 Take the EA-Script Template and add three or so lines of code and you have done integration or the so-called glue-code.
+Decide whether you pass the environment like guid ot type to C# or let C# do it.
 
 ![EA VB Scripts](images/VbScriptsOverview.png)
 
 ## References
 
-* [EA Community](https://community.sparxsystems.com/community-resources/1065-use-c-java-for-your-vb-script), Use C#, Java, for your VB Scripting
-* [EA Hybrid Scripting](https://github.com/Helmut-Ortmann/EnterpriseArchitect_hoTools/wiki/HybridScripting)
-* [Why LINQ beats SQL](https://www.linqpad.net/WhyLINQBeatsSQL.aspx)
-* [WiKi](../../wiki)
+- [EA Community](https://community.sparxsystems.com/community-resources/1065-use-c-java-for-your-vb-script), Use C#, Java, for your VB Scripting
+- [EA Hybrid Scripting](https://github.com/Helmut-Ortmann/EnterpriseArchitect_hoTools/wiki/HybridScripting)
+- [Why LINQ beats SQL](https://www.linqpad.net/WhyLINQBeatsSQL.aspx)
+- [WiKi](../../wiki)
+
+## History
+
+### 1.1.0 
+
+### 1.0.0 Created
+
+- C# Interface
+- VB: Browser Script
+- VB: Diagram Script
+- Preparation Java Interface

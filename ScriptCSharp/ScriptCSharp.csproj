@@ -92,7 +92,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CSharp\ScriptCSharp.cs" />
-    <Compile Include="CSharp\Program.cs" />
+    <Compile Include="CSharp\ProgramMain.cs" />
+    <Compile Include="CSharp\XmlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +110,8 @@
   <ItemGroup>
     <Content Include="EA\VBScript\AutomationScripts.xml" />
     <Content Include="EA\VBScript\ListDiagramElements.vbs" />
+    <Content Include="EA\VBScript\ModelSearch.vbs" />
+    <Content Include="EA\VBScript\ProjectSearchScript.vbs" />
     <Content Include="EA\VBScript\TraversePackage.vbs" />
     <Content Include="Library\hoLinqToSql.dll" />
     <Content Include="EA\VBScript\RunCommand.vbs" />

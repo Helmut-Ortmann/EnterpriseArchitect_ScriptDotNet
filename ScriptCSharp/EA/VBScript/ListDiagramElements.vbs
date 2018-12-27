@@ -28,7 +28,8 @@ sub OnDiagramScript()
 	    ' Run the CSharp script
 		' Command: "ListDiagramElements"
 		' Par1:    Diagram GUID
-		runCommand "%EA_SCRIPT_HOME%ScriptCSharp.exe", "ListDiagramElements", currentDiagram.DiagramGUID
+		runCommand "%EA_SCRIPT_HOME%ScriptCSharp.exe", "ListDiagramElements", currentDiagram.DiagramGUID, " "
+
 	
 		' Get a reference to any selected connector/objects
 		dim selectedConnector as EA.Connector
