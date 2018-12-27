@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace ho.ScriptDotnet.CSharpLinq
+namespace ScriptsCSharpLinq.CSharpLinq
 {
     class ProgramMain
     {
@@ -10,7 +10,7 @@ namespace ho.ScriptDotnet.CSharpLinq
         private const string Tab = "    ";
         private static readonly bool verbose = true;
         /// <summary>
-        /// Entry of the ScriptCSharp.exe to be called from EA Script (JScript, JavaScript, VB Script)
+        /// Entry of the ScriptCSharpLinq.exe to be called from EA Script (JScript, JavaScript, VB Script)
         /// args[0]  PID: Process id connect to the calling EA repository
         /// args[1]  Command to execute
         /// args[2-] Parameter used to execute. Typically guid(s) and EA types
@@ -24,37 +24,27 @@ namespace ho.ScriptDotnet.CSharpLinq
             #if DEBUG
                 MessageBox.Show(@"Debug: VS
 
-- VS: Attach to process, choose ScriptCSharp
+- VS: Attach to process, choose ScriptCSharpLinq
 - VS: Set breakpoints
 - VS: Debug
-- EA: click on OK", "DEBUG: Attach VS to ScriptCSharp");
+- EA: click on OK", "DEBUG: Attach VS to ScriptCSharpLinq");
             #endif
             // handle admin requests
             if (HandleAdminRequest(args)) return;
 
-            ScriptCSharp scriptCSharp = GetScriptCSharp(args);
+            ScriptCSharpLinq scriptCSharpLinq = GetScriptCSharp(args);
             string command = GetCommand(args);
-            if (scriptCSharp != null && !String.IsNullOrWhiteSpace(command))
+            if (scriptCSharpLinq != null && !String.IsNullOrWhiteSpace(command))
             {
                 // Print Script and its first two parameter
-                if (verbose) scriptCSharp.Print($"{GetScriptFullName()} '{command}' '{GetArg(args,2)}'");
+                if (verbose) scriptCSharpLinq.Print($"{GetScriptFullName()} '{command}' '{GetArg(args,2)}'");
                 bool returnValue;
                 switch (command)
                 {
-                    case "TraversePackage":
-                        returnValue = scriptCSharp.TraversePackage(args);
+                    case "LinqForSql":
+                        returnValue = scriptCSharpLinq.LinqForSql(args);
                         break;
-                    case "ListDiagramElements":
-                        returnValue = scriptCSharp.ListDiagramElements(args);
-                        break;
-                    // EA shows ModelSearch Scripts in the Context Menu of the Search Window (row of find Search Results) 
-                    case "ModelSearch":
-                        returnValue = scriptCSharp.ModelSearch(args);
-                        break;
-                    // EA shows ProjectSearch Scripts as last entry in the Search Categories (Common Searches, .. ,mySearch, Scripts) of the Search Window
-                    case "ProjectSearch":
-                        returnValue = scriptCSharp.ProjectSearch(args);
-                        break;
+                    
 
                     case "SetEnvHome":
                         returnValue = SetUserScriptHomeEnv();
@@ -85,7 +75,7 @@ Par4:{Tab}{(args.Length > 3 ? args[3]: "")}
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        static ScriptCSharp GetScriptCSharp(string[] args)
+        static ScriptCSharpLinq GetScriptCSharp(string[] args)
         {
             if (args.Length > 0)
             {
@@ -95,7 +85,7 @@ Par4:{Tab}{(args.Length > 3 ? args[3]: "")}
                     return null;
                 }
 
-                return new ScriptCSharp(pid);
+                return new ScriptCSharpLinq(pid);
             }
             else
             {
@@ -192,7 +182,7 @@ Par4:{Tab}{(args.Length > 3 ? args[3]: "")}
             return false;
         }
         /// <summary>
-        /// Get info of ScriptCSharp
+        /// Get info of ScriptCSharpLinq
         /// </summary>
         // ReSharper disable once UnusedMethodReturnValue.Local
         private static bool GetInfo()
@@ -213,7 +203,7 @@ Admin Commands:
 'DelEnv'{Tab}Del the '{EaScriptHomeEnvName}' Env Variable
 
 Copy  with CTRL+C to Clipboard, ignore beep!
-", "ScriptCSharp: Info");
+", "ScriptCSharpLinq: Info");
             return true;
         }
 

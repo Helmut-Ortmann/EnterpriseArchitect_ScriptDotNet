@@ -4,32 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DFEF2030-F0BF-4F63-B55F-358B9C8DB5ED}</ProjectGuid>
+    <ProjectGuid>{8E6EDD9F-88F0-4201-88D9-371B41279BD8}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ho.ScriptDotNet</RootNamespace>
-    <AssemblyName>ScriptCSharp</AssemblyName>
+    <RootNamespace>ScriptsCSharpLinq</RootNamespace>
+    <AssemblyName>ScriptCSharpLinq</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -39,7 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -71,21 +56,27 @@
   <ItemGroup>
     <Reference Include="hoLinqToSql, Version=3.3.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Library\hoLinqToSql.dll</HintPath>
+      <HintPath>..\ScripsCSharpLinq\Library\hoLinqToSql.dll</HintPath>
     </Reference>
     <Reference Include="Interop.EA">
       <HintPath>..\..\..\..\..\Program Files (x86)\Sparx Systems\EA\Interop.EA.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="linq2db, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e41013125f9e410a, processorArchitecture=MSIL">
+      <HintPath>..\packages\linq2db.2.6.1\lib\net46\linq2db.dll</HintPath>
+    </Reference>
+    <Reference Include="MoreLinq, Version=3.1.0.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <HintPath>..\packages\morelinq.3.1.0\lib\net451\MoreLinq.dll</HintPath>
     </Reference>
     <Reference Include="SparxSystems.Repository">
       <HintPath>..\..\..\..\..\Program Files (x86)\Sparx Systems\EA\SparxSystems.Repository.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows" />
-    <Reference Include="System.Windows.Forms">
-      <Private>True</Private>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -94,47 +85,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CSharp\ScriptCSharp.cs" />
-    <Compile Include="CSharp\ProgramMain.cs" />
-    <Compile Include="CSharp\XmlHelper.cs" />
+    <Compile Include="CSharpLinq\ProgramMain.cs" />
+    <Compile Include="CSharpLinq\ScriptCSharpLinq.cs" />
+    <Compile Include="CSharpLinq\XmlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Scripts\CheckEnv.bat" />
-    <None Include="Scripts\DelEnv.bat" />
-    <None Include="Scripts\GetEnv.bat" />
-    <None Include="Scripts\Info.bat" />
-    <None Include="Scripts\Install.bat" />
-    <None Include="Scripts\SetEnv.bat" />
-    <None Include="Scripts\SetEnvDebug.bat" />
-    <None Include="Scripts\SetEnvProductive.bat" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EA\VBScript\AutomationScripts.xml" />
-    <Content Include="EA\VBScript\ListDiagramElements.vbs" />
-    <Content Include="EA\VBScript\ModelSearch.vbs" />
-    <Content Include="EA\VBScript\ProjectSearchScript.vbs" />
-    <Content Include="EA\VBScript\TraversePackage.vbs" />
+    <Folder Include="EA\" />
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Library\hoLinqToSql.dll" />
-    <Content Include="EA\VBScript\RunCommand.vbs" />
-    <Content Include="EA\VBScript\RunCommandTest.vbs" />
+    <Content Include="Library\x64\e_sqlite3.dll" />
+    <Content Include="Library\x64\SQLite.Interop.dll" />
+    <Content Include="Library\x86\e_sqlite3.dll" />
+    <Content Include="Library\x86\SQLite.Interop.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6.2 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)ScriptCSharp\Scripts\Install.bat" "$(SolutionDir)ScriptCSharp\bin\Release" "c:\temp\EaScripts"</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)ScriptCSharp\Scripts\Install.bat" "$(SolutionDir)ScriptCSharpLinq\bin\Release" "c:\temp\EaScripts"</PostBuildEvent>
   </PropertyGroup>
 </Project>

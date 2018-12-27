@@ -21,7 +21,7 @@ The additional effort: Three lines or so glue-code to connect to the C# Console 
 EA:  
 
 ```vbScript
-result = RunCommand(myScript.exe, "DoTask1", guid) ' vb script glue-code
+result = RunCommand(myScript.exe, "DoTask1", guid, "") ' vb script glue-code
 ```
 
 .NET:
@@ -55,6 +55,9 @@ Decide whether you pass the environment like guid ot type to C# or let C# do it.
 ## History
 
 ### 1.1.0 
+
+- VB Script: RunComand with three parameters instead of 2
+- LINQ to SQL as project ScriptsCSharpLinq  (powerful, database independent)
 
 ### 1.0.0 Created
 

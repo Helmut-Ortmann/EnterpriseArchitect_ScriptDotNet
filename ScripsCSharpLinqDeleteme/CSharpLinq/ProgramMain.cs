@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Reflection;
 using System.Windows.Forms;
+using ho.ScriptDotnet.CSharpLinq;
 
-namespace ho.ScriptDotnet.CSharpLinq
+namespace ScripsCSharpLinq.CSharpLinq
 {
     class ProgramMain
     {
