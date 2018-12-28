@@ -45,7 +45,7 @@ Decide whether you pass the environment like guid ot type to C# or let C# do it.
 
 ![EA VB Scripts](../../wiki/images/VbScriptsOverview.png)
 
-You may condense this to:
+You may condense this code section to (one line of VB Script code):
 
 ```vbscript
 ' Call C# "TraversePackage" and make everything there
