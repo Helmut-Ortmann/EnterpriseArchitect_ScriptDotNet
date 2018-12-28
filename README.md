@@ -43,7 +43,7 @@ switch (command) {  // Decide what to do
 Take the EA-Script Template and add three or so lines of code and you have done integration or the so-called glue-code.
 Decide whether you pass the environment like guid ot type to C# or let C# do it.
 
-![EA VB Scripts](images/VbScriptsOverview.png)
+![EA VB Scripts](../../wiki/images/VbScriptsOverview.png)
 
 ## References
 
