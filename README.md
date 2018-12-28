@@ -45,6 +45,13 @@ Decide whether you pass the environment like guid ot type to C# or let C# do it.
 
 ![EA VB Scripts](../../wiki/images/VbScriptsOverview.png)
 
+You may condense this to:
+
+```vbscript
+' Call C# "TraversePackage" and make everything there
+runCommand "%EA_SCRIPT_HOME%ScriptCSharp.exe", "TraversePackage", "", ""
+```
+
 ## References
 
 - [EA Community](https://community.sparxsystems.com/community-resources/1065-use-c-java-for-your-vb-script), Use C#, Java, for your VB Scripting
