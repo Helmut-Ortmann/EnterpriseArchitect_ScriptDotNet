@@ -13,6 +13,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{50
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptCSharpLinq", "ScriptCSharpLinq\ScriptCSharpLinq.csproj", "{8E6EDD9F-88F0-4201-88D9-371B41279BD8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScriptJava", "ScriptJava", "{B84F63D9-77A3-4E77-B8B3-576DF85134CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{9B53FD13-C71B-4A4D-A9BB-0E49753F2C34}"
+	ProjectSection(SolutionItems) = preProject
+		ScriptJava\Scripts\DeployJava.bat = ScriptJava\Scripts\DeployJava.bat
+		ScriptJava\Scripts\SetEnvProductive.bat = ScriptJava\Scripts\SetEnvProductive.bat
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bin", "bin", "{8273B515-CFA9-4029-A15F-B5683AA6A6BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "release", "release", "{224F2A3F-8840-482D-A33B-5E7A2D0949F9}"
+	ProjectSection(SolutionItems) = preProject
+		ScriptJava\bin\release\eaapi.jar = ScriptJava\bin\release\eaapi.jar
+		ScriptJava\bin\release\SparxSystems\RepositoryInterface.class = ScriptJava\bin\release\SparxSystems\RepositoryInterface.class
+		ScriptJava\bin\release\SparxSystems\RepositoryInterface.java = ScriptJava\bin\release\SparxSystems\RepositoryInterface.java
+		ScriptJava\bin\release\SSJavaCOM.dll = ScriptJava\bin\release\SSJavaCOM.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SparxSystems", "SparxSystems", "{0E613DAD-480E-493C-8FAD-B68174B02E18}"
+	ProjectSection(SolutionItems) = preProject
+		ScriptJava\bin\release\SparxSystems\RepositoryInterface.class = ScriptJava\bin\release\SparxSystems\RepositoryInterface.class
+		ScriptJava\bin\release\SparxSystems\RepositoryInterface.java = ScriptJava\bin\release\SparxSystems\RepositoryInterface.java
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{D9E80798-4893-40B3-8F17-C863C92EEC26}"
+	ProjectSection(SolutionItems) = preProject
+		ScriptJava\Source\RepositoryInterface.java = ScriptJava\Source\RepositoryInterface.java
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +69,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B84F63D9-77A3-4E77-B8B3-576DF85134CB} = {502CB88A-4712-4627-A212-8D6442538049}
+		{9B53FD13-C71B-4A4D-A9BB-0E49753F2C34} = {B84F63D9-77A3-4E77-B8B3-576DF85134CB}
+		{8273B515-CFA9-4029-A15F-B5683AA6A6BD} = {B84F63D9-77A3-4E77-B8B3-576DF85134CB}
+		{224F2A3F-8840-482D-A33B-5E7A2D0949F9} = {8273B515-CFA9-4029-A15F-B5683AA6A6BD}
+		{0E613DAD-480E-493C-8FAD-B68174B02E18} = {224F2A3F-8840-482D-A33B-5E7A2D0949F9}
+		{D9E80798-4893-40B3-8F17-C863C92EEC26} = {B84F63D9-77A3-4E77-B8B3-576DF85134CB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CCB31953-96A4-4BE1-A7E3-856BF8C0A466}
