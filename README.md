@@ -1,10 +1,12 @@
 # EnterpriseArchitect_ScriptDotNet
 
-- Use the power of .NET like C#, F#, VB for your EA Scripting and Querying
-- Get the knowledge to use other languages like Java.
+- Use the power of
+  - .NET like C#, F#, VB, C++
+  - [Java](Java)
 
-Implement your EA Scripts in .NET and make only the glue-code to EA in JScript, VB Script or JavaScript. The minimal EA glue-code is responsible for EA integration and passing the parameters to the Windows Console Application written in your favourite .NET language.
+for your EA Scripting and Querying.
 
+Implement your EA Scripts in .NET or Java and make only the glue-code to EA in JScript, VB Script or JavaScript. The minimal EA glue-code is responsible for EA integration and passing the parameters to your target environment (.NET or [Jave](Java)).
 You use your IDE with your Debugger.
 
 The additional effort: Three lines or so glue-code to connect to the C# Console Application which does the heavy work.
@@ -37,6 +39,8 @@ switch (command) {  // Decide what to do
     break;
 }
 ```
+
+[Java](Java):
 
 ## EA glue-code
 
