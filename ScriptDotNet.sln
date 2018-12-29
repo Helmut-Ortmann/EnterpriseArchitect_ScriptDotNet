@@ -42,6 +42,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{D9E807
 		ScriptJava\Source\RepositoryInterface.java = ScriptJava\Source\RepositoryInterface.java
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EA", "EA", "{9EC41E5F-D96E-4FCA-8D0F-C3115F691D24}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VBScript", "VBScript", "{9C3A4AEA-3E17-4230-9719-33E9C0D21B4C}"
+	ProjectSection(SolutionItems) = preProject
+		ScriptJava\EA\AutomationScripts.xml = ScriptJava\EA\AutomationScripts.xml
+		ScriptJava\EA\Java.vbs = ScriptJava\EA\Java.vbs
+		ScriptJava\EA\RunCommandVb.vbs = ScriptJava\EA\RunCommandVb.vbs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +86,8 @@ Global
 		{224F2A3F-8840-482D-A33B-5E7A2D0949F9} = {8273B515-CFA9-4029-A15F-B5683AA6A6BD}
 		{0E613DAD-480E-493C-8FAD-B68174B02E18} = {224F2A3F-8840-482D-A33B-5E7A2D0949F9}
 		{D9E80798-4893-40B3-8F17-C863C92EEC26} = {B84F63D9-77A3-4E77-B8B3-576DF85134CB}
+		{9EC41E5F-D96E-4FCA-8D0F-C3115F691D24} = {B84F63D9-77A3-4E77-B8B3-576DF85134CB}
+		{9C3A4AEA-3E17-4230-9719-33E9C0D21B4C} = {9EC41E5F-D96E-4FCA-8D0F-C3115F691D24}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CCB31953-96A4-4BE1-A7E3-856BF8C0A466}

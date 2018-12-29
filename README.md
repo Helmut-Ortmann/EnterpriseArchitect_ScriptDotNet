@@ -40,7 +40,7 @@ switch (command) {  // Decide what to do
 }
 ```
 
-[Java](Java):
+[Java](../../wiki/Java):
 
 ## EA glue-code
 
@@ -69,6 +69,7 @@ runCommand "%EA_SCRIPT_HOME%ScriptCSharp.exe", "TraversePackage", "", ""
 
 - VB Script: RunComand with three parameters instead of 2
 - LINQ to SQL as project ScriptsCSharpLinq  (powerful, database independent)
+- [Java](../../wiki/Java)
 
 ### 1.0.0 Created
 

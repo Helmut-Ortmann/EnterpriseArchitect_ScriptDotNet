@@ -6,5 +6,10 @@ REM
 REM This Script is called in the Post Build event
 REM Example: 
 REM "$(SolutionDir)ScriptCSharp\Scripts\Install.bat" "$(SolutionDir)ScriptCSharp\bin\Release" "c:\temp\EaScripts"
+
+@echo on
 robocopy %1 %2 *.dll *.exe /S
+
+@echo off
+pause
 exit 0

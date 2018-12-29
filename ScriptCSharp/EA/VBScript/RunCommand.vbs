@@ -94,13 +94,14 @@ end sub
 ' - Return Value The Standard Output of the called *.exe
 '
 ' Your *.exe:    Get the EA Repository by the Process ID of the EA Instance
-' - para1        The ProcessID of the EA Instance
-' - para2        param1 
-' - para3        param2 
-' - para4        param3 
+' - prosessId    The ProcessID of the EA Instance
+' - para1        param1, usually the thing to do (e.g. "Print","ShowItem","SearchFor",..) 
+' - para2        param2 
+' - para3        param3 
 Function RunCommand(CommandExe, param1, param2, param3)
     RunCommand = Run(CommandExe, ProcessId("EA.exe"), param1, param2, param3)
 End Function
+
 
 '--------------------------------------------------------------------
 ' Function to call an Java Class and returns the Standard Output to the caller
@@ -118,7 +119,7 @@ End Function
 ' - para3             param2 
 ' - para4             param3 
 Function RunCommandJava(baseFolder, eaClass, param1, param2, param3, param4)
-    RunCommandJava = RunJava(baseFolder, eaClass, ProcessId("EA.exe"), param1, param2, param3, param4)
+    RunCommandJava = RunJava(baseFolder, eaClass, ProcessId("EA.exe"), param1, param2, param3)
 End Function
 
 
@@ -184,33 +185,36 @@ Function Run(CommandExe, pid, param1, param2, param3)
 		  vbCRLF & "Description:" & Err.Description, _
 		  65, _
 		  "Error running command"
+		  stdOut = "Undefined Error!"
 	  return
 	End If
 	On Error Goto 0
 
-	stdErr = wsShellExe.StdErr.ReadAll
+    if IsObject(wsShellExe) Then
+	  stdErr = wsShellExe.StdErr.ReadAll
 	
-	Select Case wsShellExe.Status
-      Case WshFinished
-		 'Session.Output "WshFinished"
-		 stdOut = wsShellExe.StdOut.ReadAll
-      Case WshFailed
-         'strOutput = wsShellExe.StdErr.ReadAll
-		 Session.Output "WshEnd"
-	  Case Else
-	     'Session.Output "Error"
-		 stdOut = "Undefined Error!"
-    End Select
+		Select Case wsShellExe.Status
+		  Case WshFinished
+			 'Session.Output "WshFinished"
+			 stdOut = wsShellExe.StdOut.ReadAll
+		  Case WshFailed
+			 'strOutput = wsShellExe.StdErr.ReadAll
+			 Session.Output "WshEnd"
+		  Case Else
+			 'Session.Output "Error"
+			 stdOut = "Undefined Error!"
+		End Select
+	End If
     Run = stdOut
 End Function
 
 
 '-----------------------------------------------------
-' Helper function to run Java Class with 2 parameters
+' Helper function to run Java Class with 3 parameters
 ' Tested with java in a Hybrid SPARX Environment 
 ' It reads the Standard Output and returns it as the result
 ' Note: Build has run
-'       java is in path
+'       java sdk 32 bit (bin folder) is in path
 '
 ' baseFolder:   Full path of the C# exe according to SPARX
 ' eaClass:     e.g.: SparxSystems.RepositoryInterface
@@ -225,7 +229,7 @@ End Function
 '           \SparxSystems\
 '                        \... your Java classes
 Function RunJava(baseFolder, eaClass, param1, param2, param3, param4)
-    Dim ws,wsShellExe, Command
+    Dim ws,wsShellExe, Command, Java32Path
     Dim objEnv
 	Dim stdOut ' Standard output
 	Dim stdErr ' Error output
@@ -233,20 +237,26 @@ Function RunJava(baseFolder, eaClass, param1, param2, param3, param4)
     Const WshFailed = 2
 	
 
-    ' Set environment variable
+
 	Set ws = CreateObject("WScript.Shell")
+	' Expand environment variables
+	baseFolder = ws.ExpandEnvironmentStrings(baseFolder)
+	java32Path = ws.ExpandEnvironmentStrings("%JDK32_HOME%bin")
+	
+	
+    ' Set environment variable	
     Set objEnv = ws.Environment ("PROCESS")
     objEnv("PATH") = objEnv("PATH") & ";" & baseFolder
 	
 	' Set current folder
 	ws.CurrentDirectory = baseFolder
-    Session.Output ws.CurrentDirectory
 
+    ' Set path environment variable for 32 bit Java	
+    objEnv("PATH") = java32Path & ";" & objEnv("PATH") 
 
     Set ws = CreateObject("WScript.Shell")
     command = "java -cp ""eaapi.jar;.;"" " & eaClass & " " & param1 & " " &param2 & " " & param3 & " " & param4 & " " 
-    Session.Output "Command=" & "'" & command & "'"
-    Session.Output objEnv("PATH")
+	
     On Error Resume Next
     Set wsShellExe = ws.Exec(command)
 	If Err.Number <> 0 Then
@@ -256,23 +266,30 @@ Function RunJava(baseFolder, eaClass, param1, param2, param3, param4)
 		  vbCRLF & "Description:" & Err.Description, _
 		  65, _
 		  "Error running command"
+		  
+	  Session.Output "JavaPath='" & java32Path & "'"
+	  Session.Output "Classes='" & baseFolder & "'"
+	  Session.Output " "
 	  return
 	End If
 	On Error Goto 0
 
-	stdErr = wsShellExe.StdErr.ReadAll
-	
-	Select Case wsShellExe.Status
-      Case WshFinished
-		 'Session.Output "WshFinished"
-		 stdOut = wsShellExe.StdOut.ReadAll
-      Case WshFailed
-         'strOutput = wsShellExe.StdErr.ReadAll
-		 Session.Output "WshEnd"
-	  Case Else
-	     'Session.Output "Error"
-		 stdOut = "Undefined Error!"
-    End Select
+
+    if IsObject(wsShellExe) Then
+		stdErr = wsShellExe.StdErr.ReadAll
+		
+		Select Case wsShellExe.Status
+		  Case WshFinished
+			 'Session.Output "WshFinished"
+			 stdOut = wsShellExe.StdOut.ReadAll
+		  Case WshFailed
+			 'strOutput = wsShellExe.StdErr.ReadAll
+			 Session.Output "WshEnd"
+		  Case Else
+			 'Session.Output "Error"
+			 stdOut = "Undefined Error!"
+		End Select
+	End If
     RunJava = stdOut 
  End Function
 
