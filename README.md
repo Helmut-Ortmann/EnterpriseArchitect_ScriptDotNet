@@ -2,7 +2,7 @@
 
 - Use the power of
   - .NET like C#, F#, VB, C++
-  - [Java](Java)
+  - [Java](..\..\wiki.\Java)
 
 for your EA Scripting and Querying.
 
