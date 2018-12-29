@@ -98,6 +98,7 @@
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EA\AutomationScripts.xml" />
     <Content Include="EA\ProjectSearchLinq.vbs" />
     <Content Include="EA\RunCommand.vbs" />
     <Content Include="Library\hoLinqToSql.dll" />

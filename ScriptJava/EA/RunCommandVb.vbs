@@ -185,23 +185,26 @@ Function Run(CommandExe, pid, param1, param2, param3)
 		  vbCRLF & "Description:" & Err.Description, _
 		  65, _
 		  "Error running command"
+		  stdOut = "Undefined Error!"
 	  return
 	End If
 	On Error Goto 0
 
-	stdErr = wsShellExe.StdErr.ReadAll
+    if IsObject(wsShellExe) Then
+	  stdErr = wsShellExe.StdErr.ReadAll
 	
-	Select Case wsShellExe.Status
-      Case WshFinished
-		 'Session.Output "WshFinished"
-		 stdOut = wsShellExe.StdOut.ReadAll
-      Case WshFailed
-         'strOutput = wsShellExe.StdErr.ReadAll
-		 Session.Output "WshEnd"
-	  Case Else
-	     'Session.Output "Error"
-		 stdOut = "Undefined Error!"
-    End Select
+		Select Case wsShellExe.Status
+		  Case WshFinished
+			 'Session.Output "WshFinished"
+			 stdOut = wsShellExe.StdOut.ReadAll
+		  Case WshFailed
+			 'strOutput = wsShellExe.StdErr.ReadAll
+			 Session.Output "WshEnd"
+		  Case Else
+			 'Session.Output "Error"
+			 stdOut = "Undefined Error!"
+		End Select
+	End If
     Run = stdOut
 End Function
 
@@ -239,8 +242,7 @@ Function RunJava(baseFolder, eaClass, param1, param2, param3, param4)
 	' Expand environment variables
 	baseFolder = ws.ExpandEnvironmentStrings(baseFolder)
 	java32Path = ws.ExpandEnvironmentStrings("%JDK32_HOME%bin")
-	Session.Output "JavaPath='" & java32Path & "'"
-	Session.Output "Classes='" & baseFolder & "'"
+	
 	
     ' Set environment variable	
     Set objEnv = ws.Environment ("PROCESS")
@@ -254,8 +256,6 @@ Function RunJava(baseFolder, eaClass, param1, param2, param3, param4)
 
     Set ws = CreateObject("WScript.Shell")
     command = "java -cp ""eaapi.jar;.;"" " & eaClass & " " & param1 & " " &param2 & " " & param3 & " " & param4 & " " 
-    Session.Output "Command=" & "'" & command & "'"
-	Session.Output " "
 	
     On Error Resume Next
     Set wsShellExe = ws.Exec(command)
@@ -266,23 +266,30 @@ Function RunJava(baseFolder, eaClass, param1, param2, param3, param4)
 		  vbCRLF & "Description:" & Err.Description, _
 		  65, _
 		  "Error running command"
+		  
+	  Session.Output "JavaPath='" & java32Path & "'"
+	  Session.Output "Classes='" & baseFolder & "'"
+	  Session.Output " "
 	  return
 	End If
 	On Error Goto 0
 
-	stdErr = wsShellExe.StdErr.ReadAll
-	
-	Select Case wsShellExe.Status
-      Case WshFinished
-		 'Session.Output "WshFinished"
-		 stdOut = wsShellExe.StdOut.ReadAll
-      Case WshFailed
-         'strOutput = wsShellExe.StdErr.ReadAll
-		 Session.Output "WshEnd"
-	  Case Else
-	     'Session.Output "Error"
-		 stdOut = "Undefined Error!"
-    End Select
+
+    if IsObject(wsShellExe) Then
+		stdErr = wsShellExe.StdErr.ReadAll
+		
+		Select Case wsShellExe.Status
+		  Case WshFinished
+			 'Session.Output "WshFinished"
+			 stdOut = wsShellExe.StdOut.ReadAll
+		  Case WshFailed
+			 'strOutput = wsShellExe.StdErr.ReadAll
+			 Session.Output "WshEnd"
+		  Case Else
+			 'Session.Output "Error"
+			 stdOut = "Undefined Error!"
+		End Select
+	End If
     RunJava = stdOut 
  End Function
 
