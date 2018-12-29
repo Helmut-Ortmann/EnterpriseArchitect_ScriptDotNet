@@ -20,13 +20,21 @@ The additional effort: Three lines or so glue-code to connect to the C# Console 
 
 ## Principle
 
-EA:  
+One line of code and your are in your Java, C#, VB, F#, C++ environment!
+
+**EA:**  
 
 ```vbScript
-result = RunCommand(myScript.exe, "DoTask1", guid, "") ' vb script glue-code
+' Run the C#, VB, F#, C++ Console Programm,
+result = RunCommand(myScript.exe, "DoTask1", guid, "", "") ' C# vb script glue-code
 ```
 
-.NET:
+```vbScript
+' Run the Java Class, let Java do everything
+result = RunCommandJava("%EA_SCRIPT_HOME%", "SparxSystems.RepositoryInterface", " ", " "," ", " ") ' Java vb script glue-code
+```
+
+**.NET:**
 
 ```C#
 switch (command) {  // Decide what to do
@@ -40,7 +48,11 @@ switch (command) {  // Decide what to do
 }
 ```
 
-[Java](../../wiki/Java):
+**[Java](../../wiki/Java):**
+
+```vbScript
+// Insert your code snippet to handle the job at hand
+```
 
 ## EA glue-code
 
@@ -64,6 +76,8 @@ runCommand "%EA_SCRIPT_HOME%ScriptCSharp.exe", "TraversePackage", "", ""
 - [WiKi](../../wiki)
 
 ## History
+
+### 1.2.0
 
 ### 1.1.0 
 
