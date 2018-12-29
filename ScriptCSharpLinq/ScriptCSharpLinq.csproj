@@ -95,10 +95,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="EA\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EA\ProjectSearchLinq.vbs" />
+    <Content Include="EA\RunCommand.vbs" />
     <Content Include="Library\hoLinqToSql.dll" />
     <Content Include="Library\x64\e_sqlite3.dll" />
     <Content Include="Library\x64\SQLite.Interop.dll" />
