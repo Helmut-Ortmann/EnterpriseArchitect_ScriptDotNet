@@ -19,9 +19,9 @@ The minimal EA glue-code is responsible for EA integration and passing the param
 
 ## Principle
 
-One line of code and your are in your Java, C#, VB, F#, C++ environment!
+One line of code and you are in your Java, C#, VB, F#, C++ environment!
 
-**EA:**  
+**EA:**  VB Script glue-code
 
 ```vbScript
 ' Run the C#, VB, F#, C++ Console Programm,
@@ -33,7 +33,7 @@ result = RunCommand(myScript.exe, "DoTask1", guid, "", "") ' C# vb script glue-c
 result = RunCommandJava("%EA_SCRIPT_HOME%", "SparxSystems.RepositoryInterface", " ", " "," ", " ") ' Java vb script glue-code
 ```
 
-**.NET:**
+**.NET:** See [ScriptCSharp.cs](blob/master/ScriptCSharp/CSharp/ScriptCSharp.cs)
 
 ```C#
 switch (command) {  // Decide what to do
@@ -47,7 +47,7 @@ switch (command) {  // Decide what to do
 }
 ```
 
-**[Java](../../wiki/Java):**
+**[Java](../../wiki/Java):** See [RepositoryInterface.java](../blob/master/ScriptJava/Source/RepositoryInterface.java)
 
 ```vbScript
 // Insert your code snippet to handle the job at hand
@@ -67,10 +67,20 @@ You may condense this code section to (one line of EA VB Script code):
 runCommand "%EA_SCRIPT_HOME%ScriptCSharp.exe", "TraversePackage", "", ""
 ```
 
+## Try it
+
+1. [Installation C#](../../wiki/Installation)
+2. [Tutorial C#](../../wiki/Tutorial)
+3. [Java](Java)
+4. Use it for other languages, VB, F#, C++, or?
+
 ## References
 
-- [EA Community](https://community.sparxsystems.com/community-resources/1065-use-c-java-for-your-vb-script), Use C#, Java, for your VB Scripting
-- [EA Hybrid Scripting](https://github.com/Helmut-Ortmann/EnterpriseArchitect_hoTools/wiki/HybridScripting)
+- [EA Script Group Properties](https://sparxsystems.com/enterprise_architect_user_guide/14.0/automation/scripts_tab.html)
+- [EA Community](https://community.sparxsystems.com/community-resources/1065-use-c-java-for-your-vb-script), Use C#, VB, F#, Java for your VB Scripting
+- [SPARX Webinar Hybrid Scripting](http://www.sparxsystems.com/resources/webinar/release/ea13/videos/hybrid-scripting.html)
+- [SPARX Tutorial Hybrid Scripting](http://www.sparxsystems.com/resources/user-guides/automation/hybrid-scripting.pdf)
+- [Where is the exe?](https://stackoverflow.com/questions/304319/is-there-an-equivalent-of-which-on-the-windows-command-line)
 - [Why LINQ beats SQL](https://www.linqpad.net/WhyLINQBeatsSQL.aspx)
 - [WiKi](../../wiki)
 
