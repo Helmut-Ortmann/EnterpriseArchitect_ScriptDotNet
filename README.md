@@ -47,7 +47,7 @@ switch (command) {  // Decide what to do
 }
 ```
 
-**[Java](../../wiki/Java):** See [RepositoryInterface.java](../ScriptJava/Source/RepositoryInterface.java)
+**[Java](../../wiki/Java):** See [RepositoryInterface.java](ScriptJava/Source/RepositoryInterface.java)
 
 ```vbScript
 // Insert your code snippet to handle the job at hand
