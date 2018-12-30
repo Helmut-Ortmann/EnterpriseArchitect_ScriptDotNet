@@ -50,7 +50,15 @@ switch (command) {  // Decide what to do
 **[Java](../../wiki/Java):** See [RepositoryInterface.java](ScriptJava/Source/RepositoryInterface.java)
 
 ```vbScript
-// Insert your code snippet to handle the job at hand
+public void PrintPackage( org.sparx.Package pkg)
+    {
+        Trace( pkg.GetName());
+        Collection<org.sparx.Package> packages = pkg.GetPackages();
+        for(short i = 0; i < packages.GetCount(); i++)
+        {
+            PrintPackage(packages.GetAt(i));
+        }
+    }
 ```
 
 ## EA glue-code
