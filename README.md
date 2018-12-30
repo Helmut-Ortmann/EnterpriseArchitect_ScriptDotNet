@@ -33,7 +33,7 @@ result = RunCommand(myScript.exe, "DoTask1", guid, "", "") ' C# vb script glue-c
 result = RunCommandJava("%EA_SCRIPT_HOME%", "SparxSystems.RepositoryInterface", " ", " "," ", " ") ' Java vb script glue-code
 ```
 
-**.NET:** See [ScriptCSharp.cs](blob/master/ScriptCSharp/CSharp/ScriptCSharp.cs)
+**.NET:** See [ScriptCSharp.cs](ScriptCSharp/CSharp/ScriptCSharp.cs)
 
 ```C#
 switch (command) {  // Decide what to do
@@ -47,7 +47,7 @@ switch (command) {  // Decide what to do
 }
 ```
 
-**[Java](../../wiki/Java):** See [RepositoryInterface.java](../blob/master/ScriptJava/Source/RepositoryInterface.java)
+**[Java](../../wiki/Java):** See [RepositoryInterface.java](../ScriptJava/Source/RepositoryInterface.java)
 
 ```vbScript
 // Insert your code snippet to handle the job at hand
