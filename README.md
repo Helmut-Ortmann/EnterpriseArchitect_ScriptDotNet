@@ -79,7 +79,7 @@ runCommand "%EA_SCRIPT_HOME%ScriptCSharp.exe", "TraversePackage", "", ""
 
 1. [Installation C#](../../wiki/Installation)
 2. [Tutorial C#](../../wiki/Tutorial)
-3. [Java](Java)
+3. [Java](../../wiki/Java)
 4. Use it for other languages, VB, F#, C++, or?
 
 ## References
