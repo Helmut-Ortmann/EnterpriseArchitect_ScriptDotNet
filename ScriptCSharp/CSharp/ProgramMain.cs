@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace ho.ScriptDotnet.CSharpLinq
+namespace ho.ScriptDotnet.CSharp
 {
     class ProgramMain
     {
@@ -56,6 +56,9 @@ namespace ho.ScriptDotnet.CSharpLinq
                         returnValue = scriptCSharp.ProjectSearch(args);
                         break;
 
+                    case "TextToSpeechItem":
+                        returnValue = scriptCSharp.TextToSpeechItem(args);
+                        break;
                     case "SetEnvHome":
                         returnValue = SetUserScriptHomeEnv();
                         break;
