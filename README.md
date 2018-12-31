@@ -94,7 +94,9 @@ runCommand "%EA_SCRIPT_HOME%ScriptCSharp.exe", "TraversePackage", "", ""
 
 ## History
 
-### 1.2.0
+### 1.2.0 Text to Speech added
+
+- Minor improvement Debug and productive script
 
 ### 1.1.0 
 
