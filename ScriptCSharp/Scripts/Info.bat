@@ -1,11 +1,6 @@
 @echo off
 
-REM Info ScriptCSharp.exe
-REM Use the correct path of ScriptCSharp.exe
-REM Either of your IDE or your target directory
-
-@echo on
-c:\hoData\Development\GitHub\EnterpriseArchitect_ScriptDotNet\ScriptCSharp\bin\Release\ScriptCSharp.exe
-@echo off
-pause
+REM Info of ScriptCSharp.exe
+REM - Copy all *.exe file and *.dll files
+robocopy %1 %2 *.dll *.exe /S
 exit 0

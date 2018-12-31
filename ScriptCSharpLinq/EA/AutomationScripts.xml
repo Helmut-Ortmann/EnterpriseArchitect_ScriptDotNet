@@ -315,5 +315,29 @@
 			<Column name="Notes" value="&lt;?xml version=&quot;1.0&quot;?&gt;&#xA;&lt;DATA&gt;&lt;Debugger value=&quot;Scripting&quot;/&gt;&lt;/DATA&gt;&#xA;"/>
 			<Column name="Script" value=" "/>
 		</DataRow>
+		<DataRow>
+			<Column name="ScriptID" value="46"/>
+			<Column name="ScriptCategory" value="605A62F7-BCD0-4845-A8D0-7DC45B4D2E3F"/>
+			<Column name="ScriptName" value="{C17F6D7F-F60A-4880-8D36-B903A06F38EA}"/>
+			<Column name="ScriptAuthor" value="{C67BBA63-8B2B-4f08-819D-3DF7298C3097}"/>
+			<Column name="Notes" value="&lt;Script Name=&quot;TextToSpeach&quot; Type=&quot;Internal&quot; Language=&quot;VBScript&quot;/&gt;&#xA;"/>
+			<Column name="Script" value="option explicit&#xA;&#xA;!INC Local Scripts.EAConstants-VBScript&#xA;!INC ScriptDotNet.RunCommandVb&#xA;&#xA;'&#xA;' Read the selected element aloud.&#xA;'&#xA;sub OnProjectBrowserScript()&#xA;	&#xA;	runCommand &quot;%EA_SCRIPT_HOME%ScriptCSharp.exe&quot;, &quot;TextToSpeechItem&quot;, &quot;&quot;, &quot;&quot;&#xA;	&#xA;end sub&#xA;&#xA;OnProjectBrowserScript&#xA;"/>
+		</DataRow>
+		<DataRow>
+			<Column name="ScriptID" value="47"/>
+			<Column name="ScriptCategory" value="605A62F7-BCD0-4845-A8D0-7DC45B4D2E3F"/>
+			<Column name="ScriptName" value="{34E35E8A-84AB-4892-8DDB-90FB001990F3}"/>
+			<Column name="ScriptAuthor" value="{EC1418B2-432A-43e9-A047-12F30DD09BAB}"/>
+			<Column name="Notes" value="&lt;Script Name=&quot;TextToSpeech&quot; Type=&quot;Internal&quot; Language=&quot;VBScript&quot;/&gt;&#xA;"/>
+			<Column name="Script" value="option explicit&#xA;&#xA;!INC Local Scripts.EAConstants-VBScript&#xA;!INC ScriptDotNet.RunCommandVb&#xA;&#xA;'&#xA;' Read the selected element aloud.&#xA;'&#xA;sub OnProjectBrowserScript()&#xA;	&#xA;	runCommand &quot;%EA_SCRIPT_HOME%ScriptCSharp.exe&quot;, &quot;TextToSpeechItem&quot;, &quot;&quot;, &quot;&quot;&#xA;	&#xA;end sub&#xA;&#xA;OnProjectBrowserScript&#xA;"/>
+		</DataRow>
+		<DataRow>
+			<Column name="ScriptID" value="48"/>
+			<Column name="ScriptCategory" value="605A62F7-BCD0-4845-A8D0-7DC45B4D2E3F"/>
+			<Column name="ScriptName" value="{266568B6-064F-434d-B355-C5157E931029}"/>
+			<Column name="ScriptAuthor" value="{36191E54-AF6F-46d4-B20A-AA90637F7E4C}"/>
+			<Column name="Notes" value="&lt;Script Name=&quot;TextToSpeech&quot; Type=&quot;Internal&quot; Language=&quot;VBScript&quot;/&gt;&#xA;"/>
+			<Column name="Script" value="option explicit&#xA;&#xA;!INC Local Scripts.EAConstants-VBScript&#xA;!INC ScriptDotNet.RunCommandVb&#xA;&#xA;'&#xA;' Read the selected element aloud.&#xA;'&#xA;sub OnProjectBrowserScript()&#xA;	&#xA;	runCommand &quot;%EA_SCRIPT_HOME%ScriptCSharp.exe&quot;, &quot;TextToSpeechItem&quot;, &quot;&quot;, &quot;&quot;&#xA;	&#xA;end sub&#xA;&#xA;OnProjectBrowserScript&#xA;"/>
+		</DataRow>
 	</DataSet>
 </RefData>

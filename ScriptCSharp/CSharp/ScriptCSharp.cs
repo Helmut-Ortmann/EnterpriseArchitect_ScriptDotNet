@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 using ho.ScriptDotNet.CSharp;
+using System.Speech.Synthesis;
+using System.Threading;
 
 
-namespace ho.ScriptDotnet.CSharpLinq
+namespace ho.ScriptDotnet.CSharp
 {
     public class ScriptCSharp
     {
@@ -129,19 +130,6 @@ namespace ho.ScriptDotnet.CSharpLinq
         /// <returns></returns>
         public bool ProjectSearch(string[] args)
         {
-            // Get the context item 
-            EA.ObjectType objType = _repository.GetContextItem(out object contextObject);
-            switch (objType)
-            {
-                case EA.ObjectType.otElement:
-                    EA.Element el = (EA.Element)contextObject;
-                    break;
-                case EA.ObjectType.otPackage:
-                    EA.Package pkg = (EA.Package)contextObject;
-                    break;
-
-            }
-
             string sql = @"select o.ea_guid as [CLASSGUID], o.object_type as [CLASSTYPE],
                             o.Name, o.object_type, o.Stereotype
                         from t_object o
@@ -151,6 +139,86 @@ namespace ho.ScriptDotnet.CSharpLinq
             string xmlEaOutput = XmlHelper.MakeEaXmlOutput(xml);
             _repository.RunModelSearch("","", "", xmlEaOutput);
             return true;
+        }
+        /// <summary>
+        /// Reads the context element aloud
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        public bool TextToSpeechItem(string[] args)
+        {
+            // Get the context item 
+            EA.ObjectType objType = _repository.GetContextItem(out object contextObject);
+            string text = "";
+            string name = "";
+            bool found = true;
+            switch (objType)
+            {
+                case EA.ObjectType.otElement:
+                    EA.Element el = (EA.Element)contextObject;
+                    text = el.Notes;
+                    name = el.Name;
+                    break;
+                case EA.ObjectType.otPackage:
+                    EA.Package pkg = (EA.Package)contextObject;
+                    text = pkg.Notes;
+                    name = pkg.Name;
+                    break;
+                default:
+                    found = false;
+                    break;
+
+            }
+
+            if (found)
+            {
+               
+                TextToSpeech("The name is:");
+                TextToSpeechPause(shortPause: true);
+                TextToSpeech(name);
+                TextToSpeechPause(shortPause: false);
+                TextToSpeech("The notes is:");
+                TextToSpeechPause(shortPause:true);
+                // convert EA internal format to plain text
+                TextToSpeech(_repository.GetFormatFromField("TXT", text));
+            }
+
+           
+
+            return true;
+        }
+        /// <summary>
+        /// Make a little pause
+        /// </summary>
+        /// <returns></returns>
+        // ReSharper disable once UnusedMethodReturnValue.Local
+        private bool TextToSpeechPause(bool shortPause=true)
+        {
+            int pauseTime = shortPause ? 30 :80;
+            Thread.Sleep(pauseTime);
+            return true;
+        }
+        /// <summary>
+        /// Outputs the passed text.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        // ReSharper disable once UnusedMethodReturnValue.Local
+        private bool TextToSpeech(string text)
+        {
+            if (String.IsNullOrWhiteSpace(text)) text = "No text available";
+
+            // Initialize a new instance of the SpeechSynthesizer.  
+            SpeechSynthesizer synth = new SpeechSynthesizer();
+
+            // Configure the audio output.   
+            synth.SetOutputToDefaultAudioDevice();
+
+            // Speak a Name  
+            synth.Speak(text);
+
+            return true;
+
         }
         /// <summary>
         /// Print all packages and locate each package
