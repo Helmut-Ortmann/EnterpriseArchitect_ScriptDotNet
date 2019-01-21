@@ -11,5 +11,4 @@ REM "$(SolutionDir)ScriptCSharp\Scripts\Install.bat" "$(SolutionDir)ScriptCSharp
 robocopy %1 %2 *.dll *.exe /S
 
 @echo off
-pause
 exit 0

@@ -4,11 +4,13 @@ Use the power of
 
 - .NET like C#, F#, VB, C++
 - [Java](../../wiki/Java)
+- Other languages which support Windows COM like
+  - [Python, see examples](../../Python)
+  - Perl
 
 for your EA Scripting and Querying.
 
-Implement your EA Scripts in .NET or [Java](Java) and make only the glue-code to EA in JScript, VB Script or JavaScript. 
-The minimal EA glue-code is responsible for EA integration and passing the parameters to your target environment (.NET or [Java](../../wiki/Java)).
+Implement your EA Scripts in .NET, [Java](Java), or your preferred language like [Pyton](../../Python) and make only the glue-code to EA in JScript, VB Script or JavaScript. The minimal EA glue-code is responsible for EA integration and passing the parameters to your target environment (.NET, [Java](Java), [Python](../../Python), etc.).
 
 ## Benefits
 
@@ -31,6 +33,12 @@ result = RunCommand(myScript.exe, "DoTask1", guid, "", "") ' C# vb script glue-c
 ```vbScript
 ' Run the Java Class, let Java do everything
 result = RunCommandJava("%EA_SCRIPT_HOME%", "SparxSystems.RepositoryInterface", " ", " "," ", " ") ' Java vb script glue-code
+```
+
+```vbScript
+' Run Python with the file 'MyPythonFile.py'
+result = runPython("%EA_SCRIPT_HOME%MyPythonFile.py", "MakeSomeThing", "", "", "")
+
 ```
 
 **.NET:** See [ScriptCSharp.cs](ScriptCSharp/CSharp/ScriptCSharp.cs)
@@ -61,6 +69,24 @@ public void PrintPackage( org.sparx.Package pkg)
     }
 ```
 
+**[Python](../../Python)**
+
+```python
+    # get the first running EA object
+    eaApp = win32com.client.Dispatch("EA.App")
+    # get the Repository object
+    rep = eaApp.Repository
+
+    # get context element and its type
+    type = rep.GetContextItemType()
+    obj = None
+    # Check if type is plausible
+    if (type > 0):
+        obj = rep.GetContextObject()
+        name = obj.Name  
+
+```
+
 ## EA glue-code
 
 Take the EA-Script Template and add three or so lines of code and you have done integration or the so-called glue-code.
@@ -80,12 +106,14 @@ runCommand "%EA_SCRIPT_HOME%ScriptCSharp.exe", "TraversePackage", "", ""
 1. [Installation C#](../../wiki/Installation)
 2. [Tutorial C#](../../wiki/Tutorial)
 3. [Java](../../wiki/Java)
-4. Use it for other languages, VB, F#, C++, or?
+4. [Python](../../Python)
+5. Use it for other languages, VB, F#, C++, or?
 
 ## References
 
 - [EA Script Group Properties](https://sparxsystems.com/enterprise_architect_user_guide/14.0/automation/scripts_tab.html)
 - [EA Community](https://community.sparxsystems.com/community-resources/1065-use-c-java-for-your-vb-script), Use C#, VB, F#, Java for your VB Scripting
+- [Python](../../Python)
 - [SPARX Webinar Hybrid Scripting](http://www.sparxsystems.com/resources/webinar/release/ea13/videos/hybrid-scripting.html)
 - [SPARX Tutorial Hybrid Scripting](http://www.sparxsystems.com/resources/user-guides/automation/hybrid-scripting.pdf)
 - [Where is the exe?](https://stackoverflow.com/questions/304319/is-there-an-equivalent-of-which-on-the-windows-command-line)

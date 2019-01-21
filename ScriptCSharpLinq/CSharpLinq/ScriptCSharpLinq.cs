@@ -3,6 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using hoLinqToSql.LinqUtils;
+using LinqToDB;
 
 namespace ScriptsCSharpLinq.CSharpLinq
 {
@@ -49,8 +50,39 @@ namespace ScriptsCSharpLinq.CSharpLinq
             return true;
         }
 
+        /// <summary>
+        /// Outputs the requirements to use in a Requirements Matrix
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        public bool RequirementsForMatrix(string[] args)
+        {
+            // get connection string of repository
+            string connectionString = LinqUtil.GetConnectionString(_repository, out var provider);
+            DataTable dt;
+            using (var db = new DataModels.EaDataModel(provider, connectionString))
+            {
+                dt = (from o in db.t_object
+                            join p in db.t_objectproperties on o.Object_ID equals p.Object_ID into taggedValue
+                       from tv in taggedValue.DefaultIfEmpty()
+                      where o.Object_Type == "Requirement" && tv.Property == "ASIL" && tv.Value == "A"
+                        orderby new { o.Name, o.Object_Type, o.Stereotype }
+                        select new { CLASSGUID = o.ea_guid, CLASSTYPE = o.Object_Type,CLASSTABLE="t_object", Name = o.Name, Type = o.Object_Type, Stereotype = o.Stereotype, ASIL=tv.Value }
+                    ).Distinct()
+                    .ToDataTable();
+
+            }
+            // 2. Order, Filter, Join, Format to XML
+            string xml = LinqUtil.QueryAndMakeXmlFromTable(dt);
+            // 3. Out put to EA
+            _repository.RunModelSearch("", "", "", xml);
+            return true;
+        }
+
         
-       
+
+
+
 
         /// <summary>
         /// Trace to stdout which the calling EA Script receives

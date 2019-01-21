@@ -44,7 +44,11 @@ namespace ScriptsCSharpLinq.CSharpLinq
                     case "LinqForSql":
                         returnValue = scriptCSharpLinq.LinqForSql(args);
                         break;
-                    
+
+                    case "RequirementsForMatrix":
+                        returnValue = scriptCSharpLinq.RequirementsForMatrix(args);
+                        break;
+
 
                     case "SetEnvHome":
                         returnValue = SetUserScriptHomeEnv();
