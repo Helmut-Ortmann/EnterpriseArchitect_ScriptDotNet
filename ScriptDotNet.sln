@@ -7,6 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptCSharp", "ScriptCShar
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{502CB88A-4712-4627-A212-8D6442538049}"
 	ProjectSection(SolutionItems) = preProject
+		ScriptPython\Source\eaBasic1.py = ScriptPython\Source\eaBasic1.py
+		ScriptPython\Source\eaBasic2.py = ScriptPython\Source\eaBasic2.py
+		ScriptPython\Source\eacodes.py = ScriptPython\Source\eacodes.py
 		README.md = README.md
 		ScriptDotNet.eap = ScriptDotNet.eap
 	EndProjectSection
@@ -51,6 +54,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VBScript", "VBScript", "{9C
 		ScriptJava\EA\RunCommandVb.vbs = ScriptJava\EA\RunCommandVb.vbs
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScriptPython", "ScriptPython", "{A3C7BD30-A9EA-42F8-8880-1F37A86D6776}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{41B98168-55DC-4232-83C6-54841A5E15CC}"
+	ProjectSection(SolutionItems) = preProject
+		ScriptPython\Source\eaBasic1.py = ScriptPython\Source\eaBasic1.py
+		ScriptPython\Source\eaBasic2.py = ScriptPython\Source\eaBasic2.py
+		ScriptPython\Source\eacodes.py = ScriptPython\Source\eacodes.py
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{D977F12E-7E0D-46C8-9F7B-612968C45DE5}"
+	ProjectSection(SolutionItems) = preProject
+		ScriptPython\Scripts\RunPythonBasic1.vbs = ScriptPython\Scripts\RunPythonBasic1.vbs
+		ScriptPython\Scripts\RunPythonBasic2.vbs = ScriptPython\Scripts\RunPythonBasic2.vbs
+		ScriptPython\Scripts\SetEnvProductive.bat = ScriptPython\Scripts\SetEnvProductive.bat
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +107,9 @@ Global
 		{D9E80798-4893-40B3-8F17-C863C92EEC26} = {B84F63D9-77A3-4E77-B8B3-576DF85134CB}
 		{9EC41E5F-D96E-4FCA-8D0F-C3115F691D24} = {B84F63D9-77A3-4E77-B8B3-576DF85134CB}
 		{9C3A4AEA-3E17-4230-9719-33E9C0D21B4C} = {9EC41E5F-D96E-4FCA-8D0F-C3115F691D24}
+		{A3C7BD30-A9EA-42F8-8880-1F37A86D6776} = {502CB88A-4712-4627-A212-8D6442538049}
+		{41B98168-55DC-4232-83C6-54841A5E15CC} = {A3C7BD30-A9EA-42F8-8880-1F37A86D6776}
+		{D977F12E-7E0D-46C8-9F7B-612968C45DE5} = {A3C7BD30-A9EA-42F8-8880-1F37A86D6776}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CCB31953-96A4-4BE1-A7E3-856BF8C0A466}
