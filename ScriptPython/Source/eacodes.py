@@ -1,0 +1,143 @@
+class EACodes:
+
+    """ 
+
+    EA codes for ObjectType as defined in the EA script
+
+    """
+  
+
+    EA_NONE = 0
+    EA_PROJECT = 1
+    EA_REPOSITORY = 2
+    EA_COLLECTION = 3
+    EA_ELEMENT = 4
+    EA_PACKAGE = 5
+    EA_MODEL = 6
+    EA_CONNECTOR = 7
+    EA_DIAGRAM = 8
+    EA_REQUIREMENT = 9
+    EA_SCENARIO = 10
+    EA_CONSTRAINT = 11
+    EA_TAGGEDVALUE = 12
+    EA_FILE = 13
+    EA_EFFORT = 14
+    EA_METRIC = 15
+    EA_ISSUE = 16
+    EA_RISK = 17
+    EA_TEST = 18
+    EA_DIAGRAMOBJECT = 19
+    EA_DIAGRAMLINK = 20
+    EA_RESOURCE = 21
+    EA_CONNECTOREND = 22
+    EA_ATTRIBUTE = 23
+    EA_METHOD = 24
+    EA_PARAMETER = 25
+    EA_CLIENT = 26
+    EA_AUTHOR = 27
+    EA_DATATYPE = 28
+    EA_STEREOTYPE = 29
+    EA_TASK = 30
+    EA_TERM = 31
+    EA_PROJECTISSUES = 32
+    EA_ATTRIBUTECONSTRAINT = 33
+    EA_ATTRIBUTETAG = 34
+    EA_METHODCONSTRAINT = 35
+    EA_METHODTAG = 36
+    EA_CONNECTORCONSTRAINT = 37
+    EA_CONNECTORTAG = 38
+    EA_PROJECTRESOURCE = 39
+    EA_REFERENCE = 40
+    EA_ROLETAG = 41
+    EA_CUSTOMPROPERTY = 42
+    EA_PARTITION = 43
+    EA_TRANSITION = 44
+    EA_EVENTPROPERTY = 45
+    EA_EVENTPROPERTIES = 46
+    EA_PROPERTYTYPE = 47
+    EA_PROPERTIES = 48
+    EA_PROPERTY = 49
+    EA_SWIMLANEDEF = 50
+    EA_SWIMLANES = 51
+    EA_SWIMLANE = 52
+    EA_MODELWATCHER = 53
+    EA_SCENARIOSTEP = 54
+    EA_SCENARIOEXTENSION = 55
+    EA_PARAMTAG = 56
+    EA_PROJECTROLE = 57
+    EA_DOCUMENTGENERATOR = 58
+    EA_MAILINTERFACE = 59
+
+    # Dictionary
+    EA_NAMES_DICT = {
+        EA_NONE: 'None' ,
+        EA_PROJECT: "Project",
+        EA_REPOSITORY: "Repository",
+        EA_COLLECTION: "Collection",
+        EA_ELEMENT: 'Element',
+        EA_PACKAGE:'Package',
+        EA_MODEL: 'Model',
+        EA_CONNECTOR:'Connector',
+        EA_DIAGRAM:'Diagram',
+        EA_REQUIREMENT:'Requirement',
+        EA_SCENARIO:'Scenario',
+        EA_CONSTRAINT:'Constraint',
+        EA_TAGGEDVALUE:'Tagged Value',
+        EA_FILE:'File',
+        EA_EFFORT :'Effort',
+        EA_METRIC : 'Metric',
+        EA_ISSUE : 'Issue',
+        EA_RISK : 'Risk',
+        EA_TEST : 'Test',
+        EA_DIAGRAMOBJECT :'Diagram Object',
+        EA_DIAGRAMLINK : 'Diagram Link',
+        EA_RESOURCE : 'Resource',
+        EA_CONNECTOREND : 'Connector End',
+        EA_ATTRIBUTE : 'Attribute',
+        EA_METHOD : 'Method',
+        EA_PARAMETER : 'Parameter',
+        EA_CLIENT : 'Client',
+        EA_AUTHOR : 'Author',
+        EA_DATATYPE : 'Datatype',
+        EA_STEREOTYPE : 'EA_STEREOTYPE',
+        EA_TASK : 'EA_TASK',
+        EA_TERM : 'EA_TERM',
+        EA_PROJECTISSUES : 'EA_PROJECTISSUES',
+        EA_ATTRIBUTECONSTRAINT : 'EA_ATTRIBUTECONSTRAINT',
+        EA_ATTRIBUTETAG : 'EA_ATTRIBUTETAG',
+        EA_METHODCONSTRAINT : 'EA_METHODCONSTRAINT',
+        EA_METHODTAG : 'EA_METHODTAG',
+        EA_CONNECTORCONSTRAINT : 'EA_CONNECTORCONSTRAINT',
+        EA_CONNECTORTAG : 'EA_CONNECTORTAG',
+        EA_PROJECTRESOURCE : 'EA_PROJECTRESOURCE',
+        EA_REFERENCE : 'EA_REFERENCE',
+        EA_ROLETAG : 'EA_ROLETAG',
+        EA_CUSTOMPROPERTY : 'EA_CUSTOMPROPERTY',
+        EA_PARTITION : 'EA_PARTITION',
+        EA_TRANSITION : 'EA_TRANSITION',
+        EA_EVENTPROPERTY : 'EA_EVENTPROPERTY',
+        EA_EVENTPROPERTIES : 'EA_EVENTPROPERTIES',
+        EA_PROPERTYTYPE : 'EA_PROPERTYTYPE',
+        EA_PROPERTIES : 'EA_PROPERTIES',
+        EA_PROPERTY : 'EA_PROPERTY',
+        EA_SWIMLANEDEF : 'EA_SWIMLANEDEF',
+        EA_SWIMLANES : 'EA_SWIMLANES',
+        EA_SWIMLANE : 'EA_SWIMLANE',
+        EA_MODELWATCHER : 'EA_MODELWATCHER',
+        EA_SCENARIOSTEP : 'EA_SCENARIOSTEP',
+        EA_SCENARIOEXTENSION : 'EA_SCENARIOEXTENSION',
+        EA_PARAMTAG : 'EA_PARAMTAG',
+        EA_PROJECTROLE : 'EA_PROJECTROLE',
+        EA_DOCUMENTGENERATOR : 'EA_DOCUMENTGENERATOR',
+        EA_MAILINTERFACE : 'EA_MAILINTERFACE'
+    }
+
+
+
+    def __init__(self):
+
+        pass
+
+    @staticmethod
+    def getTypeName(  type):
+        return EACodes.EA_NAMES_DICT[type]
